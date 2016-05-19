@@ -17,7 +17,7 @@ Installation
 - install cordova
 - clone the project
 - cd [PROJECT_DIR]
-- cordova prepare
+- run `cordova prepare`
    this should fetch cordova-ios@3.9.2 cordova-plugin-iosrtc@2.2.4 cordova-plugin-whitelist cordova-plugin-console
 - open ith Xcode `[PROJECT_DIR]/plateforms/ios/[PROJECT_NAME].xcodeproj`
 - go to the project settings
@@ -28,7 +28,7 @@ Installation
 - change in config.xml `<content src="YOUR_JITS_MEET_SERVER">	`
 - add `<access origin="*.YOUR_DOMAIN">`
 
-- cordova prepare (TODO with each modification of config.xml or add it in build steps)
+- `cordova prepare` (TODO with each modification of config.xml and www or add it in build steps)
 
 The project should compile and run on your device but JitsiMeet won't detect WebRTC environnement
 
