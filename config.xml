@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="test.arthur.iOSRTC" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Jitsi-meet-iOS</name>
+    <description>
+        Adaptation of Jitsi-meet to iOS environnement.
+    </description>
+    <author email="artogu@live.fr">
+        Arthur TOUMASSIAN
+    </author>
+    
+    <engine name="ios" spec="^4.0.0" />
+    
+    <!--<content src="index.html" />-->
+    <!--<content src="https://jitsi.arthur.test/index.html" />-->
+    <content src="https://jitsi.arthur.test/" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <plugin name="cordova-plugin-console" />
+    <plugin name="cordova-plugin-iosrtc" />
+    <access origin="*.arthur.test" />
+    <access origin="*.jit.si" />
+    <access origin="*.gravatar.com" />
+    <access origin="*.robohash.org" />
+    <access origin="*.jquery.com" />
+    
+    <access origin="*.appspot.com" />
+    <access origin="*.w3schools.com" />
+    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
+    <allow-navigation href="data:*" />
+    
+    
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />       
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="OverrideUserAgent" value="iOSRTC/0.1"  />
+        <preference name="Orientation" value="all"  />
+    </platform>
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="auto-hide-splash-screen"   value="true" />
+</widget>
+
+<!--/*Chrome/49.0; chrome/49.0 Firefox/50.0; firefox/50.0 iOSRTC/0.1*/-->
