@@ -8,14 +8,14 @@
         Arthur TOUMASSIAN
     </author>
     
-    <engine name="ios" spec="^4.0.0" />
+    <engine name="ios" spec="^3.9.2" />
     
     <!--<content src="index.html" />-->
     <!--<content src="https://jitsi.arthur.test/index.html" />-->
     <content src="https://jitsi.arthur.test/" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="cordova-plugin-console" />
-    <plugin name="cordova-plugin-iosrtc" />
+    <plugin name="cordova-plugin-console" spec="1" />
+    <plugin name="cordova-plugin-iosrtc" spec="^2.2.4" />
     <access origin="*.arthur.test" />
     <access origin="*.jit.si" />
     <access origin="*.gravatar.com" />
