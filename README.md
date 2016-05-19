@@ -16,10 +16,10 @@ Installation
 
 - install cordova
 - clone the project
-- cd [PROJECT_DIR]
+- cd `[PROJECT_DIR]`
 - run `cordova prepare`
    this should fetch cordova-ios@3.9.2 cordova-plugin-iosrtc@2.2.4 cordova-plugin-whitelist cordova-plugin-console
-- open ith Xcode `[PROJECT_DIR]/plateforms/ios/[PROJECT_NAME].xcodeproj`
+- open `[PROJECT_DIR]/plateforms/ios/[PROJECT_NAME].xcodeproj` with Xcode
 - go to the project settings
     * set Objective-C Briging Header to `$(PROJECT_DIR)/$(PROJECT_NAME)/Plugins/cordova-plugin-iosrtc/cordova-plugin-iosrtc-Bridging-Header.h`
 	* set `Enable bitcode` to `false`
