@@ -6,45 +6,12 @@ cordova.define("cordova-plugin-iosrtc.Plugin", function(require, exports, module
  * License MIT
  */
 exec = require('cordova/exec');
- 
-var nativeCalled = false;
+
+window.nativeCalled = false;
+
 function execOrWait(onSuccess, onFailed, dplugin, call, params)
 {
-	var self = this;
-	if(nativeCalled === false)
-	{
-		function onPluginSuccess(data)
-		{
-			
-			if(onSuccess != null)
-			{
-				onSuccess(data);
-			}
-			self.nativeCalled = false;
-		}
-		function onPluginFailed(data)
-		{
-			if(onFailed != null)
-				onFailed(data);
-			self.nativeCalled = false;
-		}
-	
-		self.nativeCalled = true;
-		exec(onPluginSuccess, onPluginFailed, dplugin, call, params);
-		if(onSuccess === null)
-		{
-			self.nativeCalled = false;
-		}
-	}
-	else
-	{
-		setTimeout(function() {
-				execOrWait(onSuccess, onFailed, dplugin, call, params);
-			},
-			1000
-		);
-		return;
-	}
+	exec(onSuccess, onFailed, dplugin, call, params);	
 }
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.iosrtc = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
@@ -1401,7 +1368,8 @@ RTCPeerConnection.prototype.createAnswer = function () {
 				reject(new global.DOMError(error));
 			}
 
-			execOrWait(onResultOK, onResultError, 'iosrtcPlugin', 'RTCPeerConnection_createAnswer', [self.pcId, options]);
+			execOrWait(null, onResultError, 'iosrtcPlugin', 'RTCPeerConnection_createAnswer', [self.pcId, options]);
+			onResultOK([self.localDescription.type, self.localDescription.description]);
 		});
 	}
 
@@ -1520,6 +1488,7 @@ RTCPeerConnection.prototype.setLocalDescription = function (desc) {
 	}
 
 	execOrWait(onResultOK, onResultError, 'iosrtcPlugin', 'RTCPeerConnection_setLocalDescription', [this.pcId, desc]);
+	//onResultOK(desc);
 };
 
 
@@ -1610,7 +1579,10 @@ RTCPeerConnection.prototype.setRemoteDescription = function (desc) {
 		}
 	}
 
-	execOrWait(onResultOK, onResultError, 'iosrtcPlugin', 'RTCPeerConnection_setRemoteDescription', [this.pcId, desc]);
+	execOrWait(null, onResultError, 'iosrtcPlugin', 'RTCPeerConnection_setRemoteDescription', [this.pcId, desc]);
+	
+	//imediate javascript callback
+	onResultOK(desc);
 };
 
 
@@ -2277,7 +2249,7 @@ module.exports = {
 	dump:                  dump,
 	mediaStreamRenderers : mediaStreamRenderers,
 	
-	cordovaNativeCalled : nativeCalled
+	cordovaNativeCalled : window.nativeCalled
 };
 
 
