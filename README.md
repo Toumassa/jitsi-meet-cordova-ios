@@ -34,7 +34,7 @@ The project should compile and run on your device but JitsiMeet won't detect Web
 
 - install [Toumassa/lib-jitsi-meet](https://github.com/Toumassa/lib-jitsi-meet) with your jitsi meet
 - rename `index.html` in jitsi meet to `index_jitsi.html`
-- copie the content of `cordova_server_side` into the root directory of jitsi meet
+- copy the content of `cordova_server_side` into the root directory of jitsi meet
 
 When the app launches you should get the jitsi-meet index without WebRTC warning. 
 
@@ -47,7 +47,7 @@ TODO
 -------------
 - Videos displayed on the top of all or aren't visible (see `fix_ios.js` for temporary corrections)
 - Distant navigator looses audio from iOS
-- signaling issues
+- jingle/SDP negotiation issues due to asynchronous work between javascript and cordova native calls
 - ...
 
 Author
